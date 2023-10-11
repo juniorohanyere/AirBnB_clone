@@ -11,13 +11,26 @@ class BaseModel:
     other classes
     """
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """instantiation class
+
+        Args:
+            args (list): non-keyworded variable length list of arguments
+            kwargs (list): keyworded variable length list of arguments
         """
 
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = self.created_at
+        if kwargs:
+            fmt = '%Y-%m-%dT%H:%M:%S.%f'
+
+            for key, val in kwargs.items():
+                if key != '__class__':
+                    setattr(self, key, val)
+                if key == 'create_at' or key == 'updated_at':
+                    val = datetime.strptime(kwargs[key], fmt)
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = self.created_at
 
     def __str__(self):
         """prints [<class name>] (<self.id>) <self.__dict__>
