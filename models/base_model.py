@@ -27,6 +27,7 @@ class BaseModel:
                          is False})
         return ("[" + self.__class__.__name__ + "] (" + self.id + ") " +
                 dictionary)
+
     def save(self):
         """updates the public instance attribute updated_at with the current
         datetime
