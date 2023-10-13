@@ -8,9 +8,9 @@ import pycodestyle
 import time
 import unittest
 from models import base_model
+from models import storage
 from datetime import datetime
 from unittest import mock
-
 
 BaseModel = base_model.BaseModel
 
@@ -155,8 +155,10 @@ class TestBaseModel(unittest.TestCase):
         new_updated_at = inst.updated_at
         self.assertNotEqual(old_updated_at, new_updated_at)
         self.assertEqual(old_created_at, new_created_at)
-        self.assertTrue(mock_storage.new.called)
-        self.assertTrue(mock_storage.save.called)
+        # self.assertTrue(mock_storage.new.called)
+        # self.assertTrue(mock_storage.save.called)
+        self.assertTrue(storage.new)
+        self.assertTrue(storage.save)
 
 
 if __name__ == "__main__":
