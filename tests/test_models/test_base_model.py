@@ -17,11 +17,15 @@ class TestBaseModelDocs(unittest.TestCase):
 
     @classmethod
     def setUpClass(self):
-        """Docstrings set up tests"""
+        """... Docstrings set up tests
+        """
+
         self.base_funcs = inspect.getmembers(BaseModel, inspect.isfunction)
 
     def test_pycodestyle_conformance(self):
-        """... pycodestyle compliance"""
+        """... pycodestyle compliance
+        """
+
         for path in ['models/base_model.py',
                      'tests/test_models/test_base_model.py']:
             with self.subTest(path=path):
@@ -29,17 +33,23 @@ class TestBaseModelDocs(unittest.TestCase):
                 self.assertEqual(errors, 0)
 
     def test_doc_file(self):
-        """... file documentation"""
+        """... file documentation
+        """
+
         doc = base_model.__doc__
         self.assertIsNotNone(doc, "base_model.py needs a docstring")
 
     def test_doc_class(self):
-        """... the class documentation"""
+        """... the class documentation
+        """
+
         doc = BaseModel.__doc__
         self.assertIsNotNone(doc, "BaseModel class needs a docstring")
 
     def test_doc_init(self):
-        """... this is the class functions documentation"""
+        """... this is the class functions documentation
+        """
+
         for func in self.base_funcs:
             with self.subTest(function=func):
                 self.assertIsNot(
@@ -54,11 +64,14 @@ class TestBaseModelDocs(unittest.TestCase):
 
 
 class TestBaseModel(unittest.TestCase):
-    """this class is designed for testing the functionality of the BaseModel class.
-"""
+    """This class is designed for testing the functionality of the
+    BaseModel class.
+    """
 
     def test_instantiation(self):
-        """... ensuring that the BaseModel is correctly initialized"""
+        """... ensuring that the BaseModel is correctly initialized
+        """
+
         inst = BaseModel()
         self.assertIs(type(inst), BaseModel)
         inst.name = "My First Model"
@@ -78,7 +91,10 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(inst.number, 89)
 
     def test_datetime_attributes(self):
-        """... verifies whether the datetime values of two BaseModel instances are not equal, indicating a difference in their timestamps."""
+        """... verifies whether the datetime values of two BaseModel instances
+        are not equal, indicating a difference in their timestamps.
+        """
+
         tic = datetime.now()
         inst1 = BaseModel()
         toc = datetime.now()
@@ -94,7 +110,10 @@ class TestBaseModel(unittest.TestCase):
         self.assertNotEqual(inst1.updated_at, inst2.updated_at)
 
     def test_uuid(self):
-        """"ensuring the UUID is valid is crucial for data integrity and consistency."""
+        """... ensuring the UUID is valid is crucial for data integrity and
+        consistency.
+        """
+
         inst1 = BaseModel()
         inst2 = BaseModel()
         for inst in [inst1, inst2]:
@@ -108,7 +127,10 @@ class TestBaseModel(unittest.TestCase):
         self.assertNotEqual(inst1.id, inst2.id)
 
     def test_to_dict(self):
-        """Ensuring that the BaseModel is accurately converted into a dictionary"""
+        """... Ensuring that the BaseModel is accurately converted into a
+        dictionary
+        """
+
         my_model = BaseModel()
         my_model.name = "My First Model"
         my_model.my_number = 89
@@ -125,7 +147,10 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(d['my_number'], 89)
 
     def test_to_dict_values(self):
-        """Ensuring the accuracy of values in the dictionary returned from 'to_dict'"""
+        """... Ensuring the accuracy of values in the dictionary returned
+        from 'to_dict'
+        """
+
         t_format = "%Y-%m-%dT%H:%M:%S.%f"
         bm = BaseModel()
         new_d = bm.to_dict()
@@ -136,14 +161,19 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(new_d["updated_at"], bm.updated_at.strftime(t_format))
 
     def test_str(self):
-        """Verifying that the 'str' method produces the expected output"""
+        """... Verifying that the 'str' method produces the expected output
+        """
+
         inst = BaseModel()
         string = "[BaseModel] ({}) {}".format(inst.id, inst.__dict__)
         self.assertEqual(string, str(inst))
 
     @mock.patch('models.storage')
     def test_save(self, mock_storage):
-        """Verifying that the 'save' method appropriately updates the 'updated_at' timestamp and triggers the 'storage.save'"""
+        """... Verifying that the 'save' method appropriately updates the
+        'updated_at' timestamp and triggers the 'storage.save'
+        """
+
         inst = BaseModel()
         old_created_at = inst.created_at
         old_updated_at = inst.updated_at
