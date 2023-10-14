@@ -168,6 +168,10 @@ class HBNBCommand(cmd.Cmd):
         print(count)
 
     def precmd(self, arg):
+        """performs any setup or preprocessing tasks before the user's command
+        is executed.
+        """
+
         if "." in arg:
             arg_str = (
                 arg.replace(".", " ")
@@ -187,6 +191,10 @@ class HBNBCommand(cmd.Cmd):
         return super().precmd(arg)
 
     def onecmd(self, args):
+        """parse and execute a single command provided as an argument to the
+        method.
+        """
+
         if args == "quit":
             return self.do_quit(args)
         elif args == "EOF":
@@ -196,6 +204,9 @@ class HBNBCommand(cmd.Cmd):
 
     @classmethod
     def HBNBCommand_error_handler(cls, arg, **kwargs):
+        """handles errors
+        """
+
         if "all" in kwargs.values():
             if not arg:
                 return False
