@@ -51,9 +51,11 @@ class FileStorage:
         from models.city import City
         from models.amenity import Amenity
         from models.place import Place
+        from models.review import Review
 
         dictionary = {'BaseModel': BaseModel, 'User': User, 'State': State,
-                      'City': City, 'Amenity': Amenity, 'Place': Place}
+                      'City': City, 'Amenity': Amenity, 'Place': Place,
+                      'Review': Review}
 
         if os.path.exists(FileStorage.__file_path) is True:
             with open(FileStorage.__file_path, 'r') as file:
