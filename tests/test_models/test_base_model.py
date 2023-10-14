@@ -23,7 +23,7 @@ class TestBaseModelDocs(unittest.TestCase):
         self.base_funcs = inspect.getmembers(BaseModel, inspect.isfunction)
 
     def test_pycodestyle_conformance(self):
-        ""The pycodestyle compliance"""
+        """The pycodestyle compliance"""
 
         for path in ['models/base_model.py',
                      'tests/test_models/test_base_model.py']:
