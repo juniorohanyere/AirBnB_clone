@@ -3,6 +3,7 @@
 
 Test cases for console class and methods documentation and instances.
 """
+
 import unittest
 import pep8
 import sys
@@ -19,89 +20,70 @@ class TestBase(unittest.TestCase):
         unittest (Test): analysis of data
     """
 
-    def test_pep8_conformance_base(self):
+    def test_pep8_compliance(self):
+        """... test code style errors and warnings
+        """
+
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(['console.py'])
         self.assertEqual(result.total_errors, 0,
                          "Found code style errors (and warnings).")
 
-    def test_pep8_conformance_base_test(self):
+    def test_pep8_compliance_test(self):
+        """... test code style errors and warnings
+        """
+
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(
             ['tests/test_console.py'])
         self.assertEqual(result.total_errors, 0,
                          "Found code style errors (and warnings).")
 
-    def test_1_fiel_HBNBCommand_exist(self):
-        """ Check if methods exists """
-        self.assertTrue(hasattr(HBNBCommand, "do_prompt"))
+    def test_HBNBCommand_exist(self):
+        """... Check if methods exists
+        """
+
+        # self.assertTrue(hasattr(HBNBCommand, "do_prompt"))
         self.assertTrue(hasattr(HBNBCommand, "do_quit"))
         self.assertTrue(hasattr(HBNBCommand, "do_EOF"))
-        self.assertTrue(hasattr(HBNBCommand, "find_class"))
+        # self.assertTrue(hasattr(HBNBCommand, "find_class"))
         self.assertTrue(hasattr(HBNBCommand, "do_create"))
         self.assertTrue(hasattr(HBNBCommand, "do_show"))
         self.assertTrue(hasattr(HBNBCommand, "do_destroy"))
         self.assertTrue(hasattr(HBNBCommand, "do_update"))
         self.assertTrue(hasattr(HBNBCommand, "do_all"))
-        self.assertTrue(hasattr(HBNBCommand, "count_class"))
+        self.assertTrue(hasattr(HBNBCommand, "do_count"))
+        self.assertTrue(hasattr(HBNBCommand, "emptyline"))
         self.assertTrue(hasattr(HBNBCommand, "default"))
+        self.assertTrue(hasattr(HBNBCommand, "precmd"))
+        self.assertTrue(hasattr(HBNBCommand, "onecmd"))
+        self.assertTrue(hasattr(HBNBCommand, "HBNBCommand_error_handler"))
 
-    def test_2_file_HBNBCommand_doc(self):
-        """ Check the documentation """
+    def test_HBNBCommand_doc(self):
+        """... Check the documentation
+        """
+
         self.assertIsNotNone(HBNBCommand.__doc__)
-        self.assertIsNotNone(HBNBCommand.do_prompt.__doc__)
+        # self.assertIsNotNone(HBNBCommand.do_prompt.__doc__)
         self.assertIsNotNone(HBNBCommand.do_quit.__doc__)
         self.assertIsNotNone(HBNBCommand.do_EOF.__doc__)
-        self.assertIsNotNone(HBNBCommand.find_class.__doc__)
+        # self.assertIsNotNone(HBNBCommand.find_class.__doc__)
         self.assertIsNotNone(HBNBCommand.do_create.__doc__)
         self.assertIsNotNone(HBNBCommand.do_show.__doc__)
         self.assertIsNotNone(HBNBCommand.do_destroy.__doc__)
         self.assertIsNotNone(HBNBCommand.do_update.__doc__)
         self.assertIsNotNone(HBNBCommand.do_all.__doc__)
-        self.assertIsNotNone(HBNBCommand.count_class.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_count.__doc__)
+        self.assertIsNotNone(HBNBCommand.emptyline.__doc__)
         self.assertIsNotNone(HBNBCommand.default.__doc__)
+        self.assertIsNotNone(HBNBCommand.precmd.__doc__)
+        self.assertIsNotNone(HBNBCommand.onecmd.__doc__)
+        self.assertIsNotNone(HBNBCommand.HBNBCommand_error_handler.__doc__)
 
-<<<<<<< HEAD
-    def test_doc_class(self):
-        """... documentation for the class"""
-        doc = Console.__doc__
-        self.assertIsNotNone(doc)
-    
-    def test_quit_doc(self):
-        """...documentation for quit command"""
-        self.assertIsNotNone(Console.do_quit.__doc__)
-    
-    def test_EOF_doc(self):
-        """...documentation for EOF command"""
-        self.assertIsNotNone(Console.do_EOF.__doc__)
-    
-    def test_create_doc(self):
-        """...documentation for create command"""
-        self.assertIsNotNone(Console.do_create.__doc__)
-    
-    def test_show_doc(self):
-        """...documentation for show command"""
-        self.assertIsNotNone(Console.do_show.__doc__)
-    
-    def test_destroy_doc(self):
-        """...documentation for destroy command"""
-        self.assertIsNotNone(Console.do_destroy.__doc__)
+    def test_HBNBCommand_1(self):
+        """... test 1
+        """
 
-    def test_all_doc(self):
-        """...documentation for all command"""
-        self.assertIsNotNone(Console.do_all.__doc__)
-
-    def test_update_doc(self):
-        """...documentation for quit command"""
-        self.assertIsNotNone(Console.do_update.__doc__)
-
-
-class TestFeatures(unittest.TestCase):
-    """Class for testing Console Features"""
-    def test_create(self):
-        self.assertIsInstance()
-=======
-    def test_3_file_HBNBCommand_task_1(self):
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help quit")
         with patch('sys.stdout', new=StringIO()) as f:
@@ -109,7 +91,10 @@ class TestFeatures(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("EOF")
 
-    def test_4_file_HBNBCommand_task_2(self):
+    def test_HBNBCommand_2(self):
+        """... test 2
+        """
+
         update = "update BaseModel fce4d085-ebc6-4472-ae0e-82e2a0db7e5a" + \
             "first_name \"Betty\""
         with patch('sys.stdout', new=StringIO()) as f:
@@ -125,7 +110,10 @@ class TestFeatures(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd(update)
 
-    def test_5_file_HBNBCommand_task_3(self):
+    def test_HBNBCommand_3(self):
+        """... test 3
+        """
+
         update = "update User fce4d085-ebc6-4472-ae0e-82e2a0db7e5a" + \
             "first_name \"Betty\""
         with patch('sys.stdout', new=StringIO()) as f:
@@ -141,7 +129,10 @@ class TestFeatures(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd(update)
 
-    def test_6_file_HBNBCommand_task_4(self):
+    def test_HBNBCommand_4(self):
+        """... test 4
+        """
+
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("Place.all()")
         with patch('sys.stdout', new=StringIO()) as f:
@@ -155,7 +146,10 @@ class TestFeatures(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("User.all()")
 
-    def test_7_file_HBNBCommand_task_5(self):
+    def test_HBNBCommand_5(self):
+        """... test 5
+        """
+
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("Place.count()")
         with patch('sys.stdout', new=StringIO()) as f:
@@ -169,7 +163,10 @@ class TestFeatures(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("User.count()")
 
-    def test_8_file_HBNBCommand_task_6(self):
+    def test_HBNBCommand_6(self):
+        """... test 6
+        """
+
         User = "User.show(\"246c227a-d5c1-403d-9bc7-6a47bb9f0f68\")"
         Place = "Place.show(\"fce4d085-ebc6-4472-ae0e-82e2a0db7e5a\")"
         State = "State.show(\"5fb793e6-9c5a-4063-9c60-2f3f5a061d95\")"
@@ -189,7 +186,10 @@ class TestFeatures(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd(User)
 
-    def test_9_file_HBNBCommand_task_7(self):
+    def test_HBNBCommand_7(self):
+        """... test 7
+        """
+
         User = "User.destroy(\"246c227a-d5c1-403d-9bc7-6a47bb9f0f68\")"
         Place = "Place.destroy(\"fce4d085-ebc6-4472-ae0e-82e2a0db7e5a\")"
         State = "State.destroy(\"5fb793e6-9c5a-4063-9c60-2f3f5a061d95\")"
@@ -209,7 +209,10 @@ class TestFeatures(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd(User)
 
-    def test_10_file_HBNBCommand_task_8(self):
+    def test_HBNBCommand_8(self):
+        """... test 8
+        """
+
         User = "User.update(\"38f22813-2753-4d42-b37c-57a17f1e4f88\", " + \
             "\"first_name\", \"Erika\")"
         Place = "Place.update(\"246c227a-d5c1-403d-9bc7-6a47bb9f0f68\", " + \
@@ -235,7 +238,10 @@ class TestFeatures(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd(User)
 
-    def test_11_file_HBNBCommand_task_9(self):
+    def test_HBNBCommand_9(self):
+        """... test 9
+        """
+
         User = "User.update(\"38f22813-2753-4d42-b37c-57a17f1e4f88\", " + \
             "{'first_name': \"Erika\", \"age\": 9})"
         Place = "Place.update(\"246c227a-d5c1-403d-9bc7-6a47bb9f0f68\", " + \
@@ -260,4 +266,3 @@ class TestFeatures(unittest.TestCase):
             HBNBCommand().onecmd(Reivew)
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd(User)
->>>>>>> 78dd79a169e9447260750fa605ea816dd12734a2

@@ -3,6 +3,7 @@
 
 Custom command line for AirBnB project.
 """
+
 import cmd
 from models import storage
 from models.amenity import Amenity
@@ -15,7 +16,8 @@ from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
-    """Defines methods and attributes of the console"""
+    """Defines methods and attributes of the console
+    """
 
     prompt = "(hbnb) "
 
@@ -23,19 +25,27 @@ class HBNBCommand(cmd.Cmd):
               "User")
 
     def do_quit(self, arg):
-        """Quit command to exit the program"""
+        """Quit command to exit the program
+        """
+
         return True
 
     def do_EOF(self, arg):
-        """Exits the program when user calls EOF"""
+        """Exits the program when user calls EOF
+        """
+
         return True
 
     def emptyline(self):
-        # Overrides the dafult repeating of previous command
+        """controls a case where empty line is entered
+        """
+
         return False
 
     def do_create(self, arg):
-        """Creates a new instance of a class, saves it and prints the id"""
+        """Creates a new instance of a class, saves it and prints the id
+        """
+
         error = HBNBCommand.HBNBCommand_error_handler(arg)
         if error:
             return
@@ -47,8 +57,8 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, arg):
         """Prints the string representation of an object based on the class
         name and id
-
         """
+
         error = HBNBCommand.HBNBCommand_error_handler(arg, command="show")
         if error:
             return
@@ -63,7 +73,9 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def do_destroy(self, arg):
-        """Deletes an object based on the class name and id"""
+        """Deletes an object based on the class name and id
+        """
+
         error = HBNBCommand.HBNBCommand_error_handler(arg, command="destroy")
 
         if error:
@@ -80,8 +92,8 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, arg):
         """Prints string representation of all objects based on or not
         the class name
-
         """
+
         error = HBNBCommand.HBNBCommand_error_handler(arg, command="all")
 
         if error:
@@ -101,8 +113,8 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, arg):
         """Updates an object based on the class name and id by adding a new
         attribute or by updating an already existing attribute
-
         """
+
         error = HBNBCommand.HBNBCommand_error_handler(arg, command="update")
 
         if error:
@@ -136,7 +148,9 @@ class HBNBCommand(cmd.Cmd):
         print("** no instance found **")
 
     def do_count(self, arg):
-        """Prints the number of objects available based on the class name"""
+        """Prints the number of objects available based on the class name
+        """
+
         error = HBNBCommand.HBNBCommand_error_handler(arg)
 
         if error:
@@ -154,6 +168,10 @@ class HBNBCommand(cmd.Cmd):
         print(count)
 
     def precmd(self, arg):
+        """performs any setup or preprocessing tasks before the user's command
+        is executed.
+        """
+
         if "." in arg:
             arg_str = (
                 arg.replace(".", " ")
@@ -173,6 +191,10 @@ class HBNBCommand(cmd.Cmd):
         return super().precmd(arg)
 
     def onecmd(self, args):
+        """parse and execute a single command provided as an argument to the
+        method.
+        """
+
         if args == "quit":
             return self.do_quit(args)
         elif args == "EOF":
@@ -182,6 +204,9 @@ class HBNBCommand(cmd.Cmd):
 
     @classmethod
     def HBNBCommand_error_handler(cls, arg, **kwargs):
+        """handles errors
+        """
+
         if "all" in kwargs.values():
             if not arg:
                 return False
