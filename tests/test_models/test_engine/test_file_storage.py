@@ -35,7 +35,8 @@ class TestFileStorageDocs(unittest.TestCase):
                          "Found code style errors (and warnings).")
 
     def test_pep8_conformance_test_file_storage(self):
-        """Check whether tests/test_models/test_file_storage.py comply to PEP8."""
+        """Check whether tests/test_models/test_file_storage.py comply to PEP8.
+        """
         pep8s = pycodestyle.StyleGuide(quiet=True)
         result = pep8s.check_files(['tests/test_models/test_engine/\
 test_file_storage.py'])
