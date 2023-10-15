@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
-"""Review Class.
-
-This module contains a class that inherits from the BaseModel class.
-"""
+"""Review Class inheritance basemodel"""
 from models.base_model import BaseModel
 
 
 class Review(BaseModel):
-    """Defines the blueprint of the Review.
+    """Summarizes the design plan of the Review.
 
     Attributes:
         place_id: string - empty string: it will be the Place.id

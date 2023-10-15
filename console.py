@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-"""HBNBCommand Class.
-
-Custom command line for AirBnB project.
+"""Regular command line for AirBnB project.
 """
 
 import cmd
@@ -16,7 +14,7 @@ from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
-    """Defines methods and attributes of the console
+    """Mark out methods and attributes of the console
     """
 
     prompt = "(hbnb) "

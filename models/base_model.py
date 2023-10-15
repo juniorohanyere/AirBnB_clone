@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""module for the base model for all other modules/models
-"""
+"""Basemodule for all other modules"""
 
 import uuid
 from datetime import datetime
@@ -8,12 +7,10 @@ from models import storage
 
 
 class BaseModel:
-    """class that defines all common attributes/methods for all
-    other classes
-    """
+    """Common attributes class definitions"""
 
     def __init__(self, *args, **kwargs):
-        """instantiation class
+        """instance initializing class
 
         Args:
             args (list): non-keyworded variable length list of arguments

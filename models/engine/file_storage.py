@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""serializing and deserializing module
+"""broadcast and deserializing module
 """
 
 import json
@@ -7,7 +7,7 @@ import os
 
 
 class FileStorage:
-    """serializes instances to a JSON file and deserializes JSON file to
+    """broadcasts instances to a JSON file and deserializes JSON file to
     instances
     """
 
@@ -15,20 +15,20 @@ class FileStorage:
     __objects = {}
 
     def all(self):
-        """returns the dictionary __objects
+        """dictionary __objects get returned
         """
 
         return FileStorage.__objects
 
     def new(self, obj):
-        """sets in __objects the obj with key <obj class name>.id
+        """assign in __objects the obj with key <obj class name>.id
         """
 
         key = obj.__class__.__name__ + '.' + obj.id
         FileStorage.__objects[key] = obj
 
     def save(self):
-        """serializes __objects to the JSON file (path: __file_path)
+        """broadcasts __objects to the JSON file (path: __file_path)
         """
 
         dictionary = {}

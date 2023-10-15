@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
-"""City Class.
-
-This module contains a class that inherits from the BaseModel class.
-"""
+"""BaseModel for city class inheritance"""
 from models.base_model import BaseModel
 
 
 class City(BaseModel):
-    """Defines the blueprint of the City.
+    """Summarize the design plan for the City.
 
     Attributes:
         state_id: string - empty string: it will be the State.id

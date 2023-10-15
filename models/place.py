@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
-"""Place Class.
-
-This module contains a class that inherits from the BaseModel class.
-"""
+"""BaseModel class for Place inheritance"""
 from models.base_model import BaseModel
 
 
 class Place(BaseModel):
-    """Defines the blueprint of the Place.
+    """Summarize the design plan for the Place.
 
     Attributes:
         city_id: string - empty string: it will be the City.id
